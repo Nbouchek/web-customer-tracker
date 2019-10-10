@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>List Customers</title>
@@ -28,6 +29,13 @@
                onclick="window.location.href='showFormForAdd'; return false"
                class="add-button"
         />
+
+        <!--  add a search box -->
+        <form:form action="search" method="GET">
+            Search customer: <input type="text" name="theSearchName"/>
+
+            <input type="submit" value="Search" class="add-button"/>
+        </form:form>
 
         <%-- add our html table here --%>
         <table>
@@ -54,11 +62,11 @@
                     <td>${tempCustomer.email}</td>
                     <td>${tempCustomer.email}</td>
                     <td>
-                        <%--display the update link --%>
+                            <%--display the update link --%>
                         <a href="${updatelink}">Update</a>
                         |
                         <a href="${deletelink}"
-                        onclick="if(!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+                           onclick="if(!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
