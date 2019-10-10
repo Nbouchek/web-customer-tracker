@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class CustomerDOAImpl implements CustomerDOA{
+public class CustomerDOAImpl implements CustomerDOA {
     // need to inject the session factory
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,5 +29,15 @@ public class CustomerDOAImpl implements CustomerDOA{
 
         // return the results
         return customers;
+    }
+
+    @Override
+    public void saveCustomer(Customer theCustomer) {
+        // get the current hibernate session
+        Session currentSession = sessionFactory.getCurrentSession();
+
+        // save the customer ...
+        currentSession.save(theCustomer);
+
     }
 }

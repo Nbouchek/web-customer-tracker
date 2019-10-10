@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomerDOA {
     public List<Customer> getCustomers();
+
+    public void saveCustomer(Customer theCustomer);
 }
